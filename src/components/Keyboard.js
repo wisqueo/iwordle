@@ -2,15 +2,13 @@ import React, { useCallback, useEffect, useContext } from "react";
 import Key from "./Key";
 import { AppContext } from "../App";
 
-function Keyboard() {
-  const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-  const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-  const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
+const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
+function Keyboard() {
   const {
-    board,
     disabledLetters,
-    currAttempt,
     gameOver,
     onSelectLetter,
     onEnter,
@@ -42,8 +40,9 @@ function Keyboard() {
         });
       }
     },
-    [currAttempt]
+    [gameOver.gameOver, onDelete, onEnter, onSelectLetter]
   );
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);
 
